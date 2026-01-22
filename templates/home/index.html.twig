@@ -1,48 +1,145 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Intelligent Assistance{% endblock %}
+{% block title %}Intelligent Assistance - Future of Productivity{% endblock %}
 
 {% block body %}
-<div class="hero-section animate-fade-in">
-    <div class="container">
-        <h1 class="hero-title">Your Intelligent<br>Daily Assistant</h1>
-        <p class="lead mb-5" style="color: var(--text-muted); font-size: 1.25rem;">
-            Streamline your life with our smart booking and organization platform.<br>
-            Connect with services, manage appointments, and stay organized effortlessly.
+<!-- Aurora Background -->
+<div class="aurora-bg">
+    <div class="aurora-blob blob-1"></div>
+    <div class="aurora-blob blob-2"></div>
+    <div class="aurora-blob blob-3"></div>
+</div>
+
+<!-- Hero Section -->
+<div class="container position-relative" style="padding-top: 140px; padding-bottom: 100px;">
+    <div class="text-center animate-enter">
+        <div class="d-inline-flex align-items-center px-3 py-1 rounded-pill border border-white border-opacity-10 bg-white bg-opacity-5 mb-4 backdrop-blur-md">
+            <span class="w-2 h-2 rounded-circle bg-success me-2"></span>
+            <span class="small fw-medium text-secondary">v2.0 is now live</span>
+        </div>
+        
+        <h1 class="display-1 fw-bold mb-4 text-white display-font" style="font-size: 5rem; line-height: 1.1;">
+            Organize Life.<br>
+            <span class="text-gradient-primary">Unleash Potential.</span>
+        </h1>
+        
+        <p class="lead text-secondary mb-5 mx-auto" style="max-width: 600px; font-size: 1.25rem;">
+            The intelligent platform that connects you with services, manages your appointments, and streamlines your daily chaos into harmony.
         </p>
         
-        <div class="d-flex justify-content-center gap-3">
+        <div class="d-flex justify-content-center gap-3 mb-5">
             {% if app.user %}
-                <a href="{{ path('app_dashboard') }}" class="btn btn-primary btn-lg px-5 py-3">Go to Dashboard</a>
+                <a href="{{ path('app_dashboard') }}" class="btn-glow">
+                    Launch Dashboard <i class="bi bi-arrow-right ms-2"></i>
+                </a>
             {% else %}
-                <a href="{{ path('app_register') }}" class="btn btn-primary btn-lg px-5 py-3">Get Started</a>
-                <a href="{{ path('app_login') }}" class="btn btn-outline-light btn-lg px-5 py-3" style="border-color: var(--glass-border);">Sign In</a>
+                <a href="{{ path('app_register') }}" class="btn-glow">
+                    Start Free Trial
+                </a>
+                <a href="{{ path('app_login') }}" class="btn-glass">
+                    Sign In
+                </a>
             {% endif %}
+        </div>
+
+        <!-- Floating UI Mockup -->
+        <div class="glass-panel p-2 mx-auto mt-5 animate-enter delay-2" style="max-width: 900px; transform: perspective(1000px) rotateX(10deg);">
+            <div class="bg-dark rounded-4 overflow-hidden position-relative" style="height: 400px;">
+                <!-- Mockup Content -->
+                <div class="d-flex h-100">
+                    <!-- Sidebar Mockup -->
+                    <div class="border-end border-white border-opacity-10 p-4 d-none d-md-block" style="width: 200px; background: rgba(255,255,255,0.02);">
+                        <div class="d-flex gap-2 mb-4">
+                            <div class="w-3 h-3 rounded-circle bg-danger"></div>
+                            <div class="w-3 h-3 rounded-circle bg-warning"></div>
+                            <div class="w-3 h-3 rounded-circle bg-success"></div>
+                        </div>
+                        <div class="d-flex flex-column gap-3">
+                            <div class="h-2 w-75 bg-white bg-opacity-10 rounded"></div>
+                            <div class="h-2 w-50 bg-white bg-opacity-10 rounded"></div>
+                            <div class="h-2 w-100 bg-white bg-opacity-10 rounded"></div>
+                        </div>
+                    </div>
+                    <!-- Main Content Mockup -->
+                    <div class="flex-grow-1 p-4 position-relative">
+                        <div class="d-flex justify-content-between mb-4">
+                            <div class="h-8 w-25 bg-white bg-opacity-10 rounded"></div>
+                            <div class="h-8 w-8 rounded-circle bg-primary"></div>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-4">
+                                <div class="aspect-square bg-white bg-opacity-5 rounded-3"></div>
+                            </div>
+                            <div class="col-4">
+                                <div class="aspect-square bg-white bg-opacity-5 rounded-3"></div>
+                            </div>
+                            <div class="col-4">
+                                <div class="aspect-square bg-white bg-opacity-5 rounded-3"></div>
+                            </div>
+                        </div>
+                        <!-- Floating Notification -->
+                        <div class="position-absolute bottom-0 end-0 m-4 p-3 glass-card d-flex align-items-center gap-3" style="width: 250px;">
+                            <div class="w-10 h-10 rounded-circle bg-success d-flex align-items-center justify-content-center">✓</div>
+                            <div>
+                                <div class="small fw-bold">Appointment Confirmed</div>
+                                <div class="xsmall text-muted">Just now</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
+<!-- Features Grid -->
 <div class="container py-5">
     <div class="row g-4">
-        <div class="col-md-4">
-            <div class="card h-100 p-4 text-center">
-                <div class="feature-icon">📅</div>
-                <h3>Smart Booking</h3>
-                <p class="text-muted">Book appointments with your favorite services in seconds. Real-time availability and instant confirmation.</p>
+        <div class="col-md-4 animate-enter delay-1">
+            <div class="glass-card p-4 h-100">
+                <div class="w-12 h-12 rounded-3 bg-primary bg-opacity-10 d-flex align-items-center justify-content-center text-primary mb-4" style="font-size: 1.5rem;">
+                    📅
+                </div>
+                <h3 class="h4 text-white mb-3">Smart Scheduling</h3>
+                <p class="text-secondary">AI-powered booking system that learns your preferences and optimizes your calendar automatically.</p>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card h-100 p-4 text-center">
-                <div class="feature-icon">🏢</div>
-                <h3>For Organizations</h3>
-                <p class="text-muted">Manage your business efficiently. Handle appointments, services, and client relationships in one place.</p>
+        <div class="col-md-4 animate-enter delay-2">
+            <div class="glass-card p-4 h-100">
+                <div class="w-12 h-12 rounded-3 bg-secondary bg-opacity-10 d-flex align-items-center justify-content-center text-secondary mb-4" style="font-size: 1.5rem;">
+                    🏢
+                </div>
+                <h3 class="h4 text-white mb-3">Business Suite</h3>
+                <p class="text-secondary">Complete toolkit for organizations to manage services, staff, and client relationships in one place.</p>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card h-100 p-4 text-center">
-                <div class="feature-icon">🎫</div>
-                <h3>Support Tickets</h3>
-                <p class="text-muted">Need help? Our integrated ticketing system ensures your issues are resolved quickly and transparently.</p>
+        <div class="col-md-4 animate-enter delay-3">
+            <div class="glass-card p-4 h-100">
+                <div class="w-12 h-12 rounded-3 bg-accent bg-opacity-10 d-flex align-items-center justify-content-center text-accent mb-4" style="font-size: 1.5rem;">
+                    🎫
+                </div>
+                <h3 class="h4 text-white mb-3">Instant Support</h3>
+                <p class="text-secondary">Integrated ticketing system ensures you're never left hanging. Real-time resolution tracking.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Stats Section -->
+<div class="border-top border-white border-opacity-10 bg-white bg-opacity-5">
+    <div class="container py-5">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <div class="display-4 fw-bold text-white mb-1">10k+</div>
+                <div class="text-secondary small text-uppercase letter-spacing-1">Active Users</div>
+            </div>
+            <div class="col-md-4">
+                <div class="display-4 fw-bold text-white mb-1">500+</div>
+                <div class="text-secondary small text-uppercase letter-spacing-1">Organizations</div>
+            </div>
+            <div class="col-md-4">
+                <div class="display-4 fw-bold text-white mb-1">99.9%</div>
+                <div class="text-secondary small text-uppercase letter-spacing-1">Uptime</div>
             </div>
         </div>
     </div>

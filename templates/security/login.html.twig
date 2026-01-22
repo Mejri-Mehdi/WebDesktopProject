@@ -1,50 +1,56 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in{% endblock %}
+{% block title %}Sign In - Portal{% endblock %}
 
 {% block body %}
-<div class="container animate-fade-in">
-    <div class="row justify-content-center align-items-center" style="min-height: 80vh;">
-        <div class="col-md-5">
-            <div class="card p-5">
-                <div class="text-center mb-4">
-                    <h1 class="h3 font-weight-bold">Welcome Back</h1>
-                    <p class="text-muted">Sign in to access your dashboard</p>
-                </div>
+<div class="aurora-bg">
+    <div class="aurora-blob blob-1"></div>
+    <div class="aurora-blob blob-2"></div>
+</div>
 
-                <form method="post">
-                    {% if error %}
-                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-                    {% endif %}
-
-                    {% if app.user %}
-                        <div class="mb-3 text-center">
-                            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
-                        </div>
-                    {% endif %}
-
-                    <div class="mb-3">
-                        <label for="inputEmail" class="form-label">Email Address</label>
-                        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus placeholder="name@example.com">
-                    </div>
-                    
-                    <div class="mb-4">
-                        <label for="inputPassword" class="form-label">Password</label>
-                        <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required placeholder="Enter your password">
-                    </div>
-
-                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-
-                    <button class="btn btn-lg btn-primary w-100 mb-3" type="submit">
-                        Sign in
-                    </button>
-
-                    <div class="text-center">
-                        <p class="mb-0">Don't have an account? <a href="{{ path('app_register') }}" class="text-decoration-none" style="color: var(--secondary-color);">Register here</a></p>
-                    </div>
-                </form>
+<div class="container d-flex align-items-center justify-content-center min-vh-100">
+    <div class="glass-panel p-5 animate-enter" style="width: 100%; max-width: 480px;">
+        <div class="text-center mb-5">
+            <div class="mb-4 d-inline-block p-3 rounded-circle bg-white bg-opacity-5 border border-white border-opacity-10">
+                <span style="font-size: 2rem;">🔐</span>
             </div>
+            <h1 class="h3 text-white mb-2">Welcome Back</h1>
+            <p class="text-secondary">Enter your credentials to access the portal</p>
         </div>
+
+        <form method="post">
+            {% if error %}
+                <div class="alert alert-danger bg-danger bg-opacity-10 border border-danger text-danger rounded-3 mb-4">
+                    {{ error.messageKey|trans(error.messageData, 'security') }}
+                </div>
+            {% endif %}
+
+            <div class="mb-4">
+                <label class="small text-secondary fw-bold text-uppercase mb-2">Email Address</label>
+                <input type="email" name="email" value="{{ last_username }}" class="form-control input-modern w-100" placeholder="name@example.com" required autofocus>
+            </div>
+
+            <div class="mb-5">
+                <div class="d-flex justify-content-between mb-2">
+                    <label class="small text-secondary fw-bold text-uppercase">Password</label>
+                    <a href="#" class="small text-primary text-decoration-none">Forgot?</a>
+                </div>
+                <input type="password" name="password" class="form-control input-modern w-100" placeholder="••••••••" required>
+            </div>
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+            <button type="submit" class="btn-glow w-100 mb-4">
+                Sign In
+            </button>
+
+            <div class="text-center">
+                <p class="text-secondary small">
+                    New to the platform? 
+                    <a href="{{ path('app_register') }}" class="text-primary fw-bold text-decoration-none">Create Account</a>
+                </p>
+            </div>
+        </form>
     </div>
 </div>
 {% endblock %}

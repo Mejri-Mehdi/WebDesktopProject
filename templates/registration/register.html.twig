@@ -1,77 +1,88 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Create Account - Portal{% endblock %}
 
 {% block body %}
-<div class="container animate-fade-in">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="text-center mb-4">
-                <h1>Register</h1>
+<div class="aurora-bg">
+    <div class="aurora-blob blob-2"></div>
+    <div class="aurora-blob blob-3"></div>
+</div>
+
+<div class="container d-flex align-items-center justify-content-center min-vh-100 py-5">
+    <div class="glass-panel p-5 animate-enter" style="width: 100%; max-width: 600px;">
+        <div class="text-center mb-5">
+            <h1 class="h3 text-white mb-2">Create Account</h1>
+            <p class="text-secondary">Join the intelligent assistance network</p>
+        </div>
+
+        {{ form_start(registrationForm) }}
+            <div class="mb-4">
+                {{ form_label(registrationForm.email, null, {'label_attr': {'class': 'small text-secondary fw-bold text-uppercase mb-2'}}) }}
+                {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control input-modern w-100', 'placeholder': 'name@example.com'}}) }}
+                {{ form_errors(registrationForm.email) }}
             </div>
 
-            {{ form_start(registrationForm) }}
-                <div class="card p-4">
-                    <div class="mb-3">
-                        {{ form_label(registrationForm.email, null, {'label_attr': {'class': 'form-label'}}) }}
-                        {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
-                        {{ form_errors(registrationForm.email) }}
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            {{ form_label(registrationForm.firstName, null, {'label_attr': {'class': 'form-label'}}) }}
-                            {{ form_widget(registrationForm.firstName, {'attr': {'class': 'form-control'}}) }}
-                            {{ form_errors(registrationForm.firstName) }}
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            {{ form_label(registrationForm.lastName, null, {'label_attr': {'class': 'form-label'}}) }}
-                            {{ form_widget(registrationForm.lastName, {'attr': {'class': 'form-control'}}) }}
-                            {{ form_errors(registrationForm.lastName) }}
-                        </div>
-                    </div>
+            <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                    {{ form_label(registrationForm.firstName, null, {'label_attr': {'class': 'small text-secondary fw-bold text-uppercase mb-2'}}) }}
+                    {{ form_widget(registrationForm.firstName, {'attr': {'class': 'form-control input-modern w-100', 'placeholder': 'John'}}) }}
+                    {{ form_errors(registrationForm.firstName) }}
+                </div>
+                <div class="col-md-6">
+                    {{ form_label(registrationForm.lastName, null, {'label_attr': {'class': 'small text-secondary fw-bold text-uppercase mb-2'}}) }}
+                    {{ form_widget(registrationForm.lastName, {'attr': {'class': 'form-control input-modern w-100', 'placeholder': 'Doe'}}) }}
+                    {{ form_errors(registrationForm.lastName) }}
+                </div>
+            </div>
 
-                    <div class="mb-3">
-                        {{ form_label(registrationForm.type, null, {'label_attr': {'class': 'form-label'}}) }}
-                        {{ form_widget(registrationForm.type, {'attr': {'class': 'form-select'}}) }}
-                        {{ form_errors(registrationForm.type) }}
-                    </div>
+            <div class="mb-4">
+                {{ form_label(registrationForm.type, null, {'label_attr': {'class': 'small text-secondary fw-bold text-uppercase mb-2'}}) }}
+                {{ form_widget(registrationForm.type, {'attr': {'class': 'form-select input-modern w-100'}}) }}
+                {{ form_errors(registrationForm.type) }}
+            </div>
 
-                    <div id="organisation-fields" style="display: none;">
-                        <div class="mb-3">
-                            {{ form_label(registrationForm.companyName, null, {'label_attr': {'class': 'form-label'}}) }}
-                            {{ form_widget(registrationForm.companyName, {'attr': {'class': 'form-control'}}) }}
-                            {{ form_errors(registrationForm.companyName) }}
-                        </div>
-                    </div>
-
-                    <div class="mb-3">
-                        {{ form_label(registrationForm.phone, null, {'label_attr': {'class': 'form-label'}}) }}
-                        {{ form_widget(registrationForm.phone, {'attr': {'class': 'form-control'}}) }}
+            <div id="organisation-fields" style="display: none;" class="animate-enter">
+                <div class="mb-4">
+                    {{ form_label(registrationForm.companyName, null, {'label_attr': {'class': 'small text-secondary fw-bold text-uppercase mb-2'}}) }}
+                    {{ form_widget(registrationForm.companyName, {'attr': {'class': 'form-control input-modern w-100', 'placeholder': 'Acme Corp'}}) }}
+                    {{ form_errors(registrationForm.companyName) }}
+                </div>
+                <div class="row g-3 mb-4">
+                    <div class="col-md-6">
+                        {{ form_label(registrationForm.phone, null, {'label_attr': {'class': 'small text-secondary fw-bold text-uppercase mb-2'}}) }}
+                        {{ form_widget(registrationForm.phone, {'attr': {'class': 'form-control input-modern w-100', 'placeholder': '+1 234 567 890'}}) }}
                         {{ form_errors(registrationForm.phone) }}
                     </div>
-
-                    <div class="mb-3">
-                        {{ form_label(registrationForm.address, null, {'label_attr': {'class': 'form-label'}}) }}
-                        {{ form_widget(registrationForm.address, {'attr': {'class': 'form-control'}}) }}
+                    <div class="col-md-6">
+                        {{ form_label(registrationForm.address, null, {'label_attr': {'class': 'small text-secondary fw-bold text-uppercase mb-2'}}) }}
+                        {{ form_widget(registrationForm.address, {'attr': {'class': 'form-control input-modern w-100', 'placeholder': '123 Main St'}}) }}
                         {{ form_errors(registrationForm.address) }}
                     </div>
-
-                    <div class="mb-3">
-                        {{ form_label(registrationForm.plainPassword, 'Password', {'label_attr': {'class': 'form-label'}}) }}
-                        {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control'}}) }}
-                        {{ form_errors(registrationForm.plainPassword) }}
-                    </div>
-
-                    <div class="mb-3 form-check">
-                        {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input'}}) }}
-                        {{ form_label(registrationForm.agreeTerms, null, {'label_attr': {'class': 'form-check-label'}}) }}
-                        {{ form_errors(registrationForm.agreeTerms) }}
-                    </div>
-
-                    <button type="submit" class="btn btn-primary w-100 btn-lg">Create Account</button>
                 </div>
-            {{ form_end(registrationForm) }}
+            </div>
+
+            <div class="mb-4">
+                {{ form_label(registrationForm.plainPassword, 'Password', {'label_attr': {'class': 'small text-secondary fw-bold text-uppercase mb-2'}}) }}
+                {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control input-modern w-100', 'placeholder': '••••••••'}}) }}
+                {{ form_errors(registrationForm.plainPassword) }}
+            </div>
+
+            <div class="mb-4 form-check">
+                {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input bg-dark border-secondary'}}) }}
+                {{ form_label(registrationForm.agreeTerms, null, {'label_attr': {'class': 'form-check-label small text-secondary'}}) }}
+                {{ form_errors(registrationForm.agreeTerms) }}
+            </div>
+
+            <button type="submit" class="btn-glow w-100 mb-4">
+                Create Account
+            </button>
+        {{ form_end(registrationForm) }}
+
+        <div class="text-center">
+            <p class="text-secondary small">
+                Already have an account? 
+                <a href="{{ path('app_login') }}" class="text-primary fw-bold text-decoration-none">Sign In</a>
+            </p>
         </div>
     </div>
 </div>

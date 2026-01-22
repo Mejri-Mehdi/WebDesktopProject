@@ -1,43 +1,113 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Client Dashboard{% endblock %}
+{% block title %}Command Center{% endblock %}
 
 {% block body %}
-<div class="container mt-4 animate-fade-in">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <div>
-            <h1>My Dashboard</h1>
-            <p class="text-muted">Welcome back, {{ app.user.firstName }}!</p>
-        </div>
-        <a href="{{ path('app_client_profile') }}" class="btn btn-outline-light">My Profile</a>
+<!-- Sidebar -->
+<div class="sidebar d-none d-lg-block">
+    <div class="mb-5 px-2">
+        <h4 class="fw-bold text-white">Intelligent<span class="text-primary">.ai</span></h4>
     </div>
+    
+    <nav class="nav flex-column">
+        <a href="{{ path('app_client_dashboard') }}" class="nav-item-modern active">
+            <i class="bi bi-grid-fill"></i> Dashboard
+        </a>
+        <a href="{{ path('app_client_appointments') }}" class="nav-item-modern">
+            <i class="bi bi-calendar-event"></i> Appointments
+        </a>
+        <a href="{{ path('app_client_tickets') }}" class="nav-item-modern">
+            <i class="bi bi-ticket-perforated"></i> Support Tickets
+        </a>
+        <a href="{{ path('app_client_profile') }}" class="nav-item-modern">
+            <i class="bi bi-person-circle"></i> My Profile
+        </a>
+    </nav>
 
-    <div class="row g-4">
-        <div class="col-md-4">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">Book Appointment</h5>
-                    <p class="card-text text-muted">Find a service and book an appointment.</p>
-                    <a href="#" class="btn btn-primary w-100 mt-3">Book Now</a>
+    <div class="mt-auto pt-5">
+        <a href="{{ path('app_logout') }}" class="nav-item-modern text-danger">
+            <i class="bi bi-box-arrow-right"></i> Logout
+        </a>
+    </div>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+    <div class="container-fluid">
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-center mb-5 animate-enter">
+            <div>
+                <h1 class="h2 text-white mb-1">Good Evening, {{ app.user.firstName }}</h1>
+                <p class="text-secondary">Here's what's happening today.</p>
+            </div>
+            <div class="d-flex gap-3">
+                <button class="btn-glass"><i class="bi bi-bell"></i></button>
+                <div class="w-10 h-10 rounded-circle bg-primary d-flex align-items-center justify-content-center text-white fw-bold">
+                    {{ app.user.firstName|first }}
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">My Appointments</h5>
-                    <p class="card-text text-muted">View your upcoming and past appointments.</p>
-                    <a href="#" class="btn btn-primary w-100 mt-3">View Schedule</a>
+
+        <!-- Quick Stats -->
+        <div class="row g-4 mb-5 animate-enter delay-1">
+            <div class="col-md-4">
+                <div class="glass-card p-4">
+                    <div class="d-flex justify-content-between mb-4">
+                        <div class="text-secondary small fw-bold text-uppercase">Next Appointment</div>
+                        <i class="bi bi-calendar-check text-primary"></i>
+                    </div>
+                    <h3 class="text-white mb-1">No Upcoming</h3>
+                    <p class="text-secondary small">Book your first service now</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="glass-card p-4">
+                    <div class="d-flex justify-content-between mb-4">
+                        <div class="text-secondary small fw-bold text-uppercase">Active Tickets</div>
+                        <i class="bi bi-ticket text-warning"></i>
+                    </div>
+                    <h3 class="text-white mb-1">0</h3>
+                    <p class="text-secondary small">All systems operational</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="glass-card p-4 bg-primary bg-opacity-10 border-primary border-opacity-25">
+                    <div class="d-flex justify-content-between mb-4">
+                        <div class="text-primary small fw-bold text-uppercase">Action Required</div>
+                        <i class="bi bi-lightning-fill text-primary"></i>
+                    </div>
+                    <h3 class="text-white mb-1">Complete Profile</h3>
+                    <a href="{{ path('app_client_profile') }}" class="text-primary small text-decoration-none fw-bold">Go to Settings &rarr;</a>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">My Tickets</h5>
-                    <p class="card-text text-muted">View your support tickets and status.</p>
-                    <a href="#" class="btn btn-primary w-100 mt-3">View Tickets</a>
-                </div>
+
+        <!-- Quick Actions -->
+        <h4 class="text-white mb-4 animate-enter delay-2">Quick Actions</h4>
+        <div class="row g-4 animate-enter delay-2">
+            <div class="col-md-3">
+                <a href="#" class="glass-card p-4 d-flex flex-column align-items-center justify-content-center text-decoration-none h-100">
+                    <div class="w-12 h-12 rounded-circle bg-primary bg-opacity-10 text-primary d-flex align-items-center justify-content-center mb-3" style="font-size: 1.5rem;">
+                        <i class="bi bi-plus-lg"></i>
+                    </div>
+                    <span class="text-white fw-medium">Book Appointment</span>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="{{ path('app_client_tickets') }}" class="glass-card p-4 d-flex flex-column align-items-center justify-content-center text-decoration-none h-100">
+                    <div class="w-12 h-12 rounded-circle bg-secondary bg-opacity-10 text-secondary d-flex align-items-center justify-content-center mb-3" style="font-size: 1.5rem;">
+                        <i class="bi bi-life-preserver"></i>
+                    </div>
+                    <span class="text-white fw-medium">Get Support</span>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="glass-card p-4 d-flex flex-column align-items-center justify-content-center text-decoration-none h-100">
+                    <div class="w-12 h-12 rounded-circle bg-success bg-opacity-10 text-success d-flex align-items-center justify-content-center mb-3" style="font-size: 1.5rem;">
+                        <i class="bi bi-search"></i>
+                    </div>
+                    <span class="text-white fw-medium">Browse Services</span>
+                </a>
             </div>
         </div>
     </div>
