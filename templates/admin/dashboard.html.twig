@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1>Admin Dashboard</h1>
+    <p>Welcome, Admin!</p>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Users</h5>
+                    <p class="card-text">Manage users and permissions.</p>
+                    <a href="#" class="btn btn-primary">Go to Users</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Statistics</h5>
+                    <p class="card-text">View system statistics.</p>
+                    <a href="#" class="btn btn-primary">View Stats</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

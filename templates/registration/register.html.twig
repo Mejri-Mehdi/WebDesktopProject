@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<div class="container animate-fade-in">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="text-center mb-4">
+                <h1>Register</h1>
+            </div>
+
+            {{ form_start(registrationForm) }}
+                <div class="card p-4">
+                    <div class="mb-3">
+                        {{ form_label(registrationForm.email, null, {'label_attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(registrationForm.email) }}
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            {{ form_label(registrationForm.firstName, null, {'label_attr': {'class': 'form-label'}}) }}
+                            {{ form_widget(registrationForm.firstName, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(registrationForm.firstName) }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form_label(registrationForm.lastName, null, {'label_attr': {'class': 'form-label'}}) }}
+                            {{ form_widget(registrationForm.lastName, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(registrationForm.lastName) }}
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form_label(registrationForm.type, null, {'label_attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(registrationForm.type, {'attr': {'class': 'form-select'}}) }}
+                        {{ form_errors(registrationForm.type) }}
+                    </div>
+
+                    <div id="organisation-fields" style="display: none;">
+                        <div class="mb-3">
+                            {{ form_label(registrationForm.companyName, null, {'label_attr': {'class': 'form-label'}}) }}
+                            {{ form_widget(registrationForm.companyName, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(registrationForm.companyName) }}
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form_label(registrationForm.phone, null, {'label_attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(registrationForm.phone, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(registrationForm.phone) }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form_label(registrationForm.address, null, {'label_attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(registrationForm.address, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(registrationForm.address) }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form_label(registrationForm.plainPassword, 'Password', {'label_attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(registrationForm.plainPassword) }}
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input'}}) }}
+                        {{ form_label(registrationForm.agreeTerms, null, {'label_attr': {'class': 'form-check-label'}}) }}
+                        {{ form_errors(registrationForm.agreeTerms) }}
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 btn-lg">Create Account</button>
+                </div>
+            {{ form_end(registrationForm) }}
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const typeSelect = document.getElementById('registration_form_type');
+        const orgFields = document.getElementById('organisation-fields');
+        
+        function toggleFields() {
+            if (typeSelect.value === 'Organisation') {
+                orgFields.style.display = 'block';
+            } else {
+                orgFields.style.display = 'none';
+            }
+        }
+
+        typeSelect.addEventListener('change', toggleFields);
+        toggleFields(); // Run on load
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Intelligent Assistance{% endblock %}
+
+{% block body %}
+<div class="hero-section animate-fade-in">
+    <div class="container">
+        <h1 class="hero-title">Your Intelligent<br>Daily Assistant</h1>
+        <p class="lead mb-5" style="color: var(--text-muted); font-size: 1.25rem;">
+            Streamline your life with our smart booking and organization platform.<br>
+            Connect with services, manage appointments, and stay organized effortlessly.
+        </p>
+        
+        <div class="d-flex justify-content-center gap-3">
+            {% if app.user %}
+                <a href="{{ path('app_dashboard') }}" class="btn btn-primary btn-lg px-5 py-3">Go to Dashboard</a>
+            {% else %}
+                <a href="{{ path('app_register') }}" class="btn btn-primary btn-lg px-5 py-3">Get Started</a>
+                <a href="{{ path('app_login') }}" class="btn btn-outline-light btn-lg px-5 py-3" style="border-color: var(--glass-border);">Sign In</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card h-100 p-4 text-center">
+                <div class="feature-icon">📅</div>
+                <h3>Smart Booking</h3>
+                <p class="text-muted">Book appointments with your favorite services in seconds. Real-time availability and instant confirmation.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 p-4 text-center">
+                <div class="feature-icon">🏢</div>
+                <h3>For Organizations</h3>
+                <p class="text-muted">Manage your business efficiently. Handle appointments, services, and client relationships in one place.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 p-4 text-center">
+                <div class="feature-icon">🎫</div>
+                <h3>Support Tickets</h3>
+                <p class="text-muted">Need help? Our integrated ticketing system ensures your issues are resolved quickly and transparently.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

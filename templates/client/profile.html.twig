@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My Profile{% endblock %}
+
+{% block body %}
+<div class="container mt-5 animate-fade-in">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card p-4">
+                <div class="d-flex align-items-center mb-4">
+                    <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center text-white me-3" style="width: 64px; height: 64px; font-size: 24px;">
+                        {{ app.user.firstName|first }}{{ app.user.lastName|first }}
+                    </div>
+                    <div>
+                        <h2 class="mb-0">{{ app.user.firstName }} {{ app.user.lastName }}</h2>
+                        <p class="text-muted mb-0">{{ app.user.email }}</p>
+                    </div>
+                </div>
+
+                <hr class="border-secondary">
+
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="text-muted small">First Name</label>
+                        <p class="fw-bold">{{ app.user.firstName }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="text-muted small">Last Name</label>
+                        <p class="fw-bold">{{ app.user.lastName }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="text-muted small">Email</label>
+                        <p class="fw-bold">{{ app.user.email }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="text-muted small">Account Type</label>
+                        <p class="fw-bold">{{ app.user.type }}</p>
+                    </div>
+                    {% if app.user.phone %}
+                    <div class="col-md-6">
+                        <label class="text-muted small">Phone</label>
+                        <p class="fw-bold">{{ app.user.phone }}</p>
+                    </div>
+                    {% endif %}
+                    {% if app.user.address %}
+                    <div class="col-md-12">
+                        <label class="text-muted small">Address</label>
+                        <p class="fw-bold">{{ app.user.address }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div class="mt-4">
+                    <a href="#" class="btn btn-outline-primary">Edit Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

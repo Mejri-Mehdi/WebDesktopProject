@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Client Dashboard{% endblock %}
+
+{% block body %}
+<div class="container mt-4 animate-fade-in">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1>My Dashboard</h1>
+            <p class="text-muted">Welcome back, {{ app.user.firstName }}!</p>
+        </div>
+        <a href="{{ path('app_client_profile') }}" class="btn btn-outline-light">My Profile</a>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Book Appointment</h5>
+                    <p class="card-text text-muted">Find a service and book an appointment.</p>
+                    <a href="#" class="btn btn-primary w-100 mt-3">Book Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">My Appointments</h5>
+                    <p class="card-text text-muted">View your upcoming and past appointments.</p>
+                    <a href="#" class="btn btn-primary w-100 mt-3">View Schedule</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">My Tickets</h5>
+                    <p class="card-text text-muted">View your support tickets and status.</p>
+                    <a href="#" class="btn btn-primary w-100 mt-3">View Tickets</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
