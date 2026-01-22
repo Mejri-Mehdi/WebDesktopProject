@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1>Debug Login</h1>
+    
+    {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+
+    {% if success %}
+        <div class="alert alert-success">{{ success }}</div>
+    {% endif %}
+
+    {% if debug_info is defined %}
+        <div class="card bg-dark text-white p-3 mb-3">
+            <pre>{{ dump(debug_info) }}</pre>
+        </div>
+    {% endif %}
+
+    <form method="post">
+        <div class="mb-3">
+            <label>Email</label>
+            <input type="email" name="email" class="form-control" value="mehdimejri15@gmail.com">
+        </div>
+        <div class="mb-3">
+            <label>Password</label>
+            <input type="text" name="password" class="form-control" value="123456">
+        </div>
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-warning">Test Login</button>
+            <button type="submit" name="do_reset" value="1" class="btn btn-danger">FORCE RESET & TEST</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

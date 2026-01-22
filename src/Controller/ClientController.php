@@ -6,7 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+
 #[Route('/client')]
+#[IsGranted('ROLE_USER')]
 class ClientController extends AbstractController
 {
     #[Route('/', name: 'app_client_dashboard')]
